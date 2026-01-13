@@ -6,7 +6,7 @@ const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: true });
 
 const doc = new GoogleSpreadsheet(process.env.SHEET_ID);
 await doc.useServiceAccountAuth(
-  JSON.parse(fs.readFileSync("credentials.json"))
+  JSON.parse(process.env.GOOGLE_CREDENTIALS)
 );
 await doc.loadInfo();
 const sheet = doc.sheetsByIndex[0];
